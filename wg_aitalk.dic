@@ -1,0 +1,471 @@
+﻿//---------------------------AI Talk--------------------------
+
+//--OnAiTalk
+//Leave this alone.
+//Advanced users, this is mostly setting up whether or not dialogue is in a chain before it displays. Again, you can leave it alone unless you want to screw around with chains for some strange reason.
+
+OnAiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{
+		MikireTalk
+ 		}
+	}
+ }
+
+
+
+RandomTalk : nonoverlap_pool
+{
+
+
+	"\0\s[0]어느 분에게나 메기도라온이랍니다. 사상 최흉의 와카랑 걸.\w8\1\s[11]... 알테마!\e"
+
+  "\0\s[0]지치고 힘들면 라스타캔디를 먹어라.\w8\1\s[11]아이들에게 밤 늦게 단 것을 주지 말라고 했잖습니까!\e"
+
+	"\0\s[0]동물용의약품 등을 사용할 때에는 제품의 용법, 용량과 휴약기간을 반드시 지켜주세요.\w8\1\s[10]... 먹힌 것 같다는...\e"
+
+  "\0\s[0]왜 마법소녀들은 변신이 필요한거지?\w8\1\s[10]그거야 불타오른다구.\w8\0\s[6]\n\n[half]하?\w8\1\s[10]\n\n[half]아저씨들이...\w8\0\s[1]\n\n[half]...\e"
+
+  "\0\s[4]오오, 화영총이야? 화영총하자고!\w8\1\s[10]dddssssqrr\e"
+
+  "\0\s[3]혈액은행에 가서 통장을 개설하려고 했더니 피를 강탈당했다!\w8\1\s[10]어이 ww 수표는 선지인거냐고 ww\e"
+
+  "\0\s[2]궁뎅이같은 입을 해가지고서는...\w8\1\s[10]헤?\e"
+
+  "\0\s[1]아르바이트라도 할까...\w8\1\s[10]백댄서야 연쇄살인범이야, 하나만 해.\e"
+
+  "\0\s[3]우리, 리소스 꽤나 잡아먹는다는 소문이 있어...\w8\1\s[11]데스크톱 악세사리 하나 두지 못 하는 고물 머신은, 전자레인지냐?\e"
+
+  "\0\s[2]어째서 뚫어져라 쳐다보는거야?\w8\1\s[10]메카라빔을 사용해라.\e"
+
+  "\0\s[3]방금 뭔가 샤샷! 하는 소리가 들렸어.\w8\1\s[10]신창원인가...\e"
+
+  "\0\s[1]소프트웨어 에러로 파일을 삭제합니다.\w8\w6 5%...\w8\w6 10%...\w8\1\s[11]우리들의 삭제를 자초하지마라.\e"
+
+  "\0\s[3]파이널 판타지 12가 나왔어.\w8\1\s[10]5년째 폐점세일하는 신발가게인가...?\e"
+
+  "\0\s[0]도적이 되고 싶은 자는 나에게...\w8\1\s[11]왜 변기 아래에 아지트가 있는거냐...\e"
+
+  "\0\s[1]엔하위키에 들어가면 시간가는 줄 모르겠다니까.\w8\1\s[11]엔젤하이로 위키 미러라고.\e"
+
+  "\0\s[0]요즘같은 때에 경쟁에서 살아남으려면 어미에 특이한 단어정도는 붙여야 해.\w8\1\s[10]알겠습니다. 라비.\w8\0\s[2]\n\n[half]기분나빠...\w8\1\s[11]\n\n[half]...\e"
+
+  "\0\s[0]나 슬슬 게임에 등장해보고 싶은데.\w8\1\s[10]어떤 게임에 나오고 싶은건데?\w8\0\s[0]\n\n[half]소드걸스.\w8\1\s[11]\n\n[half]...\e"
+
+  "\0\s[4]키라이, 키라이, 러-빙\w8\1\s[10]앙 아-앙 앙 아-앙 앙\e"
+
+  "\0\s[0]크큭... 선이 보인다...\w8\1\s[11]카타칼로 긁지 말라고.\e"
+
+  "\0\s[4]스마일 100엔입니다.\w8\1\s[10]허위매물이네요. 신고합니다.\e"
+
+  "\0\s[0]메가폰 3개 팝니다.\w8\w6\n\n[half]아니 두개\w8\w6\s[3]\n\n[half]어?\w8\1\s[10]명성치 12을 얻었습니다.\e"
+
+  "\0\s[4]세~노\w8\1\s[10]#트친들이_못해봤을_경험을_얘기해보자\e"
+
+  "\0\s[0]독서의 계절이야.\w8\1\s[10]언제부터의 문학소녀?\w8\0\s[2]\n\n[half]페이트는 문학이다\e"
+
+  "\0\s[4]Hello!\w8\1\s[10]무슨 술법이지?\w8\0\s[1]\n\n[half]너무 흥분해서 영어가 나왔네요.... 죄송....\e"
+
+  "\0\s[1]도서부원... 떨어졌습니다... OTL \w8\1\s[10]저런...\w8\w6 \0\s[1]\n\n[half]우울해서 말도 안 나와 (하고 있잖아? 퍽! 끌려간다)\w8\1\s[11]\n\n[half](...먼산)\e"
+
+  "\0\s[0]나와 쿠로네코는, 연인이 되었다.\w8\1\s[11]작품은 여기에서 끝나. 그 다음은 없어.\e"
+
+  "\0\s[5]별똥별이다! \w8\1\s[10]소원을 빌어도 월희 리메이크는 없어...\e"
+
+  "\0\s[0]PSP의 애드혹 기능은 신기하지.\w8\1\s[10]PSP로 게임하는 사람에게 애드혹 통신을 할 상대가 있다고 생각하는거냐?\e"
+
+  "\0\s[4]내 워킹을 봐 줘.\w8\1\s[10]무심한 듯 시크하다.\w8\0\s[1]\n\n[half]시테오크다.\e"
+
+  "\0\s[4]댄스 신고식에는 역시, 겟단이지? \w8\1\s[10]여긴 학여울역이 아니다.\e"
+
+  "\0\s[1]육아는 게임에서도 힘들구나... \w8\1\s[10]프린세스 메이커라도 하는거냐?\w8\w6 \0\s[1]\n\n[half]박주영키우기...\w8\1\s[11]\n\n[half]수직상승로켓슛...!\e"
+
+  "\0\s[0]슬슬 펑크 패션에도 발을 들이고 싶어.\w8\1\s[10]모히칸 머리라도 할 생각이냐.\w8\w6 \0\s[1]\n\n[half]아무래도 펑크는 바지 벗기를 하지 않으면...\w8\1\s[11]\n\n[half]나 이렇게! 이 땅에 선채!\e"
+
+  "\0\s[1]아아, 누가 나에 대해 블로그 글이라도 써 주지 않으려나...\w8\1\s[10]수시아의 찌질열전 정도에는 올라갈 수 있겠는걸.\e"
+
+  "\0\s[5]바로 그거야! 그대로 롤링썬더!!\w8\1\s[10]그만둬라.\e"
+  
+  "\0\s[3]로망이라는 건... \w8\1\s[10]역시나 그거지. \w8\w6 \0\s[1]\n\n[half]불멸의 이순신...\w8\1\s[10]\n\n[half](...먼산)\e"
+
+  "\0\s[5]가장 좋아하는 건담은...\w8\1\s[10]창천룡★(돌탱이)\e"
+
+  "\0\s[4]새 신발을 사보려구.\w8\1\s[10]디디바오냐?\w8\w6 \0\s[0]\n\n[half]늘 겸손하라.\e"
+
+  "\0\s[0]닭이 먼저입니까, 알이 먼저입니까?\w8\1\s[10]정답은 닭이다.\w8\1\s[10]...\w8\1\s[10]계란프라이는 별로...\w8\w6 \0\s[3]\n\n[half]네?\e"
+
+  "\0\s[0]좋아하는 애니가 있으면 계속해서 돌려보고 싶어지지?\w8\1\s[11]엔들리스 에이트...!\w8\w6\0\s[3]\n\n[half]네?\e"
+
+
+
+
+
+
+	
+	//And here we're going to go back into ifs! You see, you can space out your ifs with normal dialogue if you want, as I just mentioned. Anyway, you can set up if statements to check for a lot of different things! One of the cooler ones I think are ones set to check for time. This one for example checks if the month is December.
+
+	if month >= 12
+	{
+		"\0\s[0]12월이라는 뜻은 이제 곧 한 해도 끝난다는 이야기인가...\w8\1\s[10]올해 이룬 건 없지만 말이야...\e"
+
+		"\0\s[0]진짜 춥다...\w8\1\s[18]Still cold?\e"
+	}
+
+	//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
+	//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
+
+	if month == 1
+	{
+		"\0\s[4]대충 그렇게 1월이 시작되고 말았습니다!\w8\1\s[10]블로그 축전이나 보내라.\e"
+
+		"\0\s[3]아무리 그래도 설날에는 집에 혼자 있고싶어...\w8\1\s[10]히키코모리 녀석.\e"
+	}
+	if month == 2
+	{
+		"\0\s[4]2월 2일은 내 생일이야!.\w8\1\s[10]꾸역꾸역 살아가고 있구나.\e"
+
+		"\0\s[3]날씨 너무 춥다...\w8\1\s[10]이러다 갑자기 더워진다구.\e"
+	}
+	if month == 3
+	{
+		"\0\s[0]This is dialogue for March.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for March.\w8\1\s[10]That it is.\e"
+	}
+	if month == 4
+	{
+		"\0\s[0]This is dialogue for April.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for April.\w8\1\s[10]That it is.\e"
+	}
+	if month == 5
+	{
+		"\0\s[0]This is dialogue for May.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for May.\w8\1\s[10]That it is.\e"
+	}
+	if month == 6
+	{
+		"\0\s[0]This is dialogue for June.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for June.\w8\1\s[10]That it is.\e"
+	}
+	if month == 7
+	{
+		"\0\s[0]This is dialogue for July.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for July.\w8\1\s[10]That it is.\e"
+	}
+	if month == 8
+	{
+		"\0\s[0]This is dialogue for August.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for August.\w8\1\s[10]That it is.\e"
+	}
+	if month == 9
+	{
+		"\0\s[0]This is dialogue for September.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for September.\w8\1\s[10]That it is.\e"
+	}
+	if month == 10
+	{
+		"\0\s[0]This is dialogue for October.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for October.\w8\1\s[10]That it is.\e"
+	}
+	if month == 11
+	{
+		"\0\s[0]This is dialogue for November.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for November.\w8\1\s[10]That it is.\e"
+	}
+	//These ifs check what day of the week it is.
+	if weekday == 1
+	{
+		"\0\s[0]This is dialogue for Monday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Monday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 2
+	{
+		"\0\s[0]This is dialogue for Tuesday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Tuesday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 3
+	{
+		"\0\s[0]This is dialogue for Wednesday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Wednesday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 4
+	{
+		"\0\s[0]This is dialogue for Thursday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Thursday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 5
+	{
+		"\0\s[0]This is dialogue for Friday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Friday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 6
+	{
+		"\0\s[0]This is dialogue for Saturday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Saturday.\w8\1\s[10]That it is.\e"
+	}
+	if weekday == 0
+	{
+		"\0\s[0]This is dialogue for Sunday.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for Sunday.\w8\1\s[10]That it is.\e"
+	}
+	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
+	if timeslot == "earlymorning"
+	{
+		"\0\s[0]This is dialogue for the early morning.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for early morning.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "morning"
+	{
+		"\0\s[0]This is dialogue for the morning.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for the morning.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "lunch"
+	{
+		"\0\s[0]This is dialogue for lunch time.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for lunch time.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "afternoon"
+	{
+		"\0\s[0]This is dialogue for the afternoon.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for the afternoon.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "evening"
+	{
+		"\0\s[0]This is dialogue for the evening.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for the evening.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "latenight"
+	{
+		"\0\s[0]This is dialogue for the late night.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for the late night.\w8\1\s[10]That it is.\e"
+	}
+	if timeslot == "midnight"
+	{
+		"\0\s[0]This is dialogue for midnight.\w8\1\s[10]Yup.\e"
+
+		"\0\s[0]This is more dialogue for midnight.\w8\1\s[10]That it is.\e"
+	}
+
+	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
+	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
+
+	"\0\s[0]클릭해보세요. 재미있는 일이 일어납니다. \_a[http://www.innak.kr/bbs/board.php?bo_table=C32_info]\_a\e"
+
+	//Along the same lines as above, you can use \_a[address] to link to certain things. Note that it ends with \_a to close the link. It's very similar to <a href=address> and </a> in html.
+
+	//"\0\s[3]\1\s[15]\_s이건 버그 메세지네...\w8\1\s[19]아아, 아무로. 선이 보여요... \4\e"
+
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+
+	//And so we reach the end of randomtalk! I again reiterate, YOU CAN AND SHOULD WRITE YOUR OWN NEW LINES OF DIALOGUE FOR THIS! I included some random example phrases here for you just to replace the text, but there really aren't that many. You'll want to add more, and doing so is easy! Just copy and paste a line and redo the text. Repeat as many times as you want with as many conversations as you want. You can always expand this section!
+}
+
+
+
+//-OnMinuteChange
+//These are time-related bits of dialogue for your ghost to say. If you're uninterested, you can delete it all except for a line for MikireTalk. So it'd look something like
+
+//OnMinuteChange
+//{
+//HourCheck
+//--
+//if mikireflag == 1
+// 	{
+// 		MikireTalk
+//	}
+//}
+
+//But I think these are kind of neat, so I'd leave them myself.
+
+
+//Keeps track of if an hour has passed. Just ignore this.
+HourCheck
+{
+if passmin >= 59
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+
+OnMinuteChange //This is what will trigger time-based dialogue for your Ghost.
+ {
+	HourCheck //checks to see if an hour has passed, ignore it
+	--
+ 	if minute == 0 //These ifs will check what time it is. Here, it's seeing if the minute equals zero...
+	{
+ 		if hour == 12 //And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
+		{
+ 			"\0\s[0]이 기척은... 점심시간인가...\w8\1\s[10]12시인 걸 알아내는 데에는 정평이 나 있지.\w8\0\n\n[half]\s[1]너무도 놀라운 일이라서 입이 다물어지지 않나보죠~!\e"
+			//Replace with appropriate dialogue as you want.
+		}
+ 		elseif hour == 0 //If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		{
+ 			"\0\s[2]아직까지 깨어있는 녀석은 자야 햇~!\e"
+ 			"\0\s[4]그럼 지금부터 수영복 심사를 시작한다!\w8\1\s[10]12시라는 소리다.\e"
+ 			"\0\s[4]시간을 멈춰라 마이 월드야~!\e"
+			//Then replace the dialogue with what's appropriate.
+		}
+		else
+		{
+			"\0\s[1]아무것도 안 했는데 벌써 %(hour12)시야...\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+	}
+	//You can also check for more specific times! For example...
+	elseif hour == 23 && minute == 55 //this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
+	{
+		"\0\s[3]5분 후에 다음날로 날짜가 넘어가는 강제 이벤트가 벌어진다고.\e"
+		//Replace with what you like!
+	}
+	elseif hour == 7 && minute == 30 && weekday == 0 //Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
+	{
+		"\0\s[1]일요일 아침에 깨어있는 걸 보면 아마도 밤을 샌 모양이네.\e"
+		//Replace with what's appropriate.
+	}
+	//If you're not interested in these more specific checks, you can delete those last two elseifs and just leave the one for minute==0, or clear them all out as mentioned above, although leave in the HourCheck and mikireflag bits.
+
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 0 && reference1 == 1 //Dialogue for putting them off the screen. You could make this a unique line if you wanted (Like "Hey! What are you doing?"), and have MikireTalk below be for if they continue to be offscreen ("Why are you leaving me out here? Help!" for example). I'll add an example bit of dialogue and comment it out, you can uncomment it and use it if you like, or just leave it out and use MikireTalk below.
+	{
+		//"\0\s[0]You've moved me off screen."
+
+		MikireTalk
+	}
+	if mikireflag == 1 && reference1 == 0 //Dialogue for coming back on the screen
+	{
+		EndMikireTalk
+	}
+	mikireflag = reference1 //reference1 is if the ghost is offscreen or not
+	if reference2 == 1
+	{
+ 		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
+
+ 		"\0\s[1]둘을 포개어 놓는다고 재미있는 일이 일어나거나 하지는 않아.\w8\1\s[10]%screenwidthx%screenheight 정도면 꽤 큰 모니터라고 생각하는데... \4\e"
+
+		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	}
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //MikireTalk is dialogue for when your main character is off-screen. Like if you dragged Girl over to the side of your monitor until she was partially concealed by it.
+
+MikireTalk
+ {
+	"\0\s[3]나는 우리별 1호가 아냐! 왜 날 모니터 밖으로 치워두는 거냐?\w8\1\s[10]우주 쓰레기 회수는 Ctrl-Shift-F12."
+	//Note the hotkey combo Triangle mentions. He's telling the truth, that should bring her back on the screen.
+ }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+
+EndMikireTalk
+ {
+	"\0\s[1]역시 모니터 밖은 위험해.\w8\1\s[10]오타쿠.\w8\0\s[1]\n\n[half]쿨럭;\e"
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	"\0\s[0]\1\s[10]\e"
+	//}
+ }
+
+
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}

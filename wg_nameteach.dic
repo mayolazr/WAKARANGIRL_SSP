@@ -1,0 +1,152 @@
+﻿//---------------------------The User's Name--------------------------
+//This .dic file has to do with setting the user's name and suffix/prefix. You may recall some of the functions mentioned here from bootend.dic. As you can see, you can spread functions across multiple .dic files if you like! Just remember my note in bootend.dic about the different between OnFunction and Function.
+
+//This file is fairly short, so don't worry! It shouldn't take you too long to finish.
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+
+//--OnTeachName
+//This is called from the config menu in the main character's double click menu when the user says they want to change their name. If you look in menu.dic you'll see the code leading to here.
+
+OnTeachName
+{
+	if reference0 == "TEACHNAME" //ignore this
+		{
+		"\0\s[0]이름을 바꾸고 싶다고? 솔직히 귀찮은데요...\![open,inputbox,OnNameTeach,-1]\e"
+		//This is the bit of dialogue you can rewrite if you want. Note that this line ends with \![open,inputbox,OnNameTeach,-1]. You may recognize this from bootend.dic. Essentially, this will lead to the next function. Make sure you don't delete that tag! The rest you can do whatever with though.
+		}
+	else
+		{
+		//This else statement is empty, and I'm mostly pointing this out to mention that you can do this too with your if/elses if you want! An empty else will simply cause your ghost not to do anything. I wouldn't get too crazy with this though.
+		}
+}
+
+
+OnNameTeach
+{
+	tempname = reference0 //this stores the name value from reference0 in tempname
+	reference0 = TOLOWER(reference0) //changes it to lowercase
+	reference0 = REPLACE(reference0," ","") //removes spaces
+	reference0 = REPLACE(reference0,".","") //removes periods
+	reference0 = REPLACE(reference0,"-","") //removes dashes
+
+	//Those extra TOLOWER/REPLACE things up there basically clean up the user's input so you don't have to check for Girl, GIRL, girl, GiRl, etc. It'll make it much easier to check for any specific name, since you won't have to account for any edge cases. Note that the names you will be checking for should be in all lowercase, however.
+
+	if reference0 == "와카랑걸"
+	{
+		"\0\s[3]저기, 그건 내 이름인데...\w8\1\s[10]좀 더 정상적인 이름을 생각해 봐.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "와카랑 걸"
+	{
+		"\0\s[3]저기, 그건 내 이름인데...\w8\1\s[10]좀 더 정상적인 이름을 생각해 봐.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "와카란걸"
+	{
+		"\0\s[3]저기, 그건 내 이름인데...\w8\1\s[10]좀 더 정상적인 이름을 생각해 봐.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "조영우"
+	{
+		"\0\s[1]본명은 금지야...\w8\1\s[10]어떻게 알았냐?\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "스테픽"
+	{
+		"\0\s[2]개새끼야!!\w8\1\s[10]너는 사람을 화나게 하는데에 꽤나 재주가 있구나.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "와카란 걸"
+	{
+		"\0\s[3]저기, 그건 내 이름인데...\w8\1\s[10]좀 더 정상적인 이름을 생각해 봐.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "재규어"
+	{
+		"\1\s[11]내 이름을 빼앗고 나를 실업자로 전락시킬 셈이냐!\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "쟈갸"
+	{
+		"\1\s[11]내 이름을 빼앗고 나를 실업자로 전락시킬 셈이냐!\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "쟈가"
+	{
+		"\1\s[11]내 이름을 빼앗고 나를 실업자로 전락시킬 셈이냐!\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "자갸"
+	{
+		"\1\s[11]내 이름을 빼앗고 나를 실업자로 전락시킬 셈이냐!\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "" //This is if the user doesn't put in a name at all, since that'd also get awkward in dialogue.
+	{
+		username = "멍청이" //this sets the user's name to USER.
+
+		"\1\s[10]자기 이름도 쓸 줄 모르는 녀석인가...\w8\0\s[4]그럼 편하게 멍청이라고 부를게~\e"
+		//You can change this snip to whatever.
+	}
+	else //if the user put in something not specified above, ie a proper name the ghost can use.
+}
+	//*********************Advanced User Info*******************************
+	//Adding new titles for your users to use is simply a matter of copy and pasting creatively. You can see how the ghost puts together the title and your name in the Select. sections below. Above, you simply need to add a new option and link it to a new Select. For example, you could add "\![*]\q[Mistress,titlemistress]\n/" between Ms. and Lady up there, then write up a Select.titlemistress below that fits the pattern of the others.
+	//***********************************************************************
+
+	//The following Select.title[word] functions add the title to the user's name, then go to the final step, NameDone. You don't have to touch any of these. Advanced users, notice how these match the linked functions in the choices above.
+
+Select.titlenone
+{
+		username = tempname
+		NameDone
+}
+
+Select.titlemr
+{
+		username = "Mr. " + tempname
+		NameDone
+}
+
+Select.titlemaster
+{
+		username = "Master " + tempname
+		NameDone
+}
+
+Select.titlems
+{
+		username = "Ms. " + tempname
+		NameDone
+}
+
+Select.titlelady
+{
+		username = "Lady " + tempname
+		NameDone
+}
+
+Select.titlessi
+{
+		username = tempname + "-ssi"
+		NameDone
+}
+
+Select.titlesan
+{
+		username = tempname + "-san"
+		NameDone
+}
+
+//--NameDone
+//This is the final bit of dialogue your ghosts will have when the user changes their name. There is a special section here for when the user first boots the ghost.
+
+NameDone
+{
+	if firstboot == 1 //this checks for the flag that was set during the firstboot sequence
+	{
+		firstboot = 0 //this turns the flag off
+
+		//This dialogue will display the first time the user puts in their name. You might want to add some closing thoughts to the introduction your ghost had in OnFirstBoot, or directions about how to use the ghost, or something like that. It's up to you!
+		"\0\s[0]%(username)...? 참으로 백괴스러운 이름이야...\w8\1\s[10]서이추 신청은 방명록에다 하라고.\e"
+	}
+	else
+	{
+	"\0\s[0]%(username)... 그렇게 불러야하는건가...\e"
+	//Rewrite this as you like. Note the %(username) tag here, as you should be well familiar with by now from the walkthrough and the other .dic files. That will display the name the user just created.
+	}
+}
